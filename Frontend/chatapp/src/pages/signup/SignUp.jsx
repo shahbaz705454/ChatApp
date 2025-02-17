@@ -1,4 +1,5 @@
 import React from 'react'
+import GenderCheckbox from './GenderCheckbox'
 
 const SignUp = () => {
   return (
@@ -40,7 +41,7 @@ const SignUp = () => {
           </div>
 
           <div>
-            <label></label>
+            <GenderCheckbox></GenderCheckbox>
             
 
           </div>
