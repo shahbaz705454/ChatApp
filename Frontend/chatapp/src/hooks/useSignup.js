@@ -1,9 +1,13 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
+import { useAuthContext } from '../context/authContext';
+
+
 
 const useSignup = () => {
     const [loading, setLoading] = useState(false);
+    const {setAuthUser} =  useAuthContext();
 
     const signup = async ({ fullName, userName, password, confirmPassword, gender }) => {
         const toastId = toast.loading("Loading...");
@@ -24,7 +28,15 @@ const useSignup = () => {
                 confirmPassword,
                 gender
             });
-            console.log("Response received:", resp);
+            console.log("Response received:", resp.data.res);
+            
+
+            // local storage 
+            localStorage.setItem("chat-user",JSON.stringify(resp.data.res))
+
+            // set authcontext api
+            setAuthUser(resp.data.res);
+
             toast.success("Signup successful!");
 
         } catch (err) {
