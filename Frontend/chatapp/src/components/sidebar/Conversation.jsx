@@ -13,11 +13,11 @@ const Conversation = ({item,emoji,lastIdx,}) => {
     
     return (
         <>
-            <div className={`flex gap-2 items-center hover:bg-sky-500 rounded p-2 py-1 cursor-pointer
+            <div className={`flex gap-2 items-center text-sm md:text-lg hover:bg-sky-500 rounded p-2 py-1 cursor-pointer
                 ${isSelected? "bg-sky-500" : ""}`}
                 onClick={()=>setSelectedConversation(item)}>
                 <div className={`avatar ${isOnline ? "online" :""}`} >
-                    <div className='w-12 rounded-full'>
+                    <div className='w-6 md:w-12 rounded-full'>
                         <img src={item.profilePic} alt='profile pic'></img>
                     </div>
 

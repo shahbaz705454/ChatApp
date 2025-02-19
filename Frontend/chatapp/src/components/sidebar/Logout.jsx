@@ -7,7 +7,7 @@ const Logout = () => {
   const { authUser } = useAuthContext();
   const { logout } = useLogout();
   return (
-    <div className=' flex items-center text-center pt-10 mt-6 gap-2'>
+    <div className=' flex items-center  text-center pt-10 mt-6 gap-2'>
       <div className=' items-center flex'><TbLogout2 className='w-6 h-6 text-white cursor-pointer'
         onClick={logout} />
 

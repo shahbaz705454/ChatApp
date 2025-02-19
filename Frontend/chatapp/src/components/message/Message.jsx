@@ -35,16 +35,16 @@ const Message = ({ message }) => {
     <div className={`chat ${chatClassName}`}>
       {/* Profile Image */}
       <div className="chat-image avatar">
-        <div className="w-10 rounded-full">
+        <div className="md:w-10 w-7 rounded-full">
           <img src={profilePic} alt="User Avatar" />
         </div>
       </div>
 
       {/* Message Bubble */}
-      <div className={`chat-bubble text-white ${bubbleColor} ${shakeClass} text-sm`}>{message.message}</div>
+      <div className={`chat-bubble w-fit text-white ${bubbleColor} ${shakeClass} text-sm h-fit`}>{message.message}</div>
 
       {/* Timestamp */}
-      <div className="chat-footer opacity-50 text-xs flex gap-1 items-center">
+      <div className="chat-footer opacity-50 text-[10px] md:text-xs flex gap-1 items-center">
         {formattedTime}
       </div>
     </div>

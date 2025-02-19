@@ -35,10 +35,10 @@ const SearchInput = () => {
   }
   return (
     
-    <form onSubmit={handleSubmit} className='flex items-center gap-2'>
-        <input value={search} onChange={(e)=>setSearch(e.target.value)} type='text' placeholder='Search...' className='input input-bordered rounded-full'></input>
-        <button type='submit' className='btn btn-circle bg-sky-500 text-white'>
-        <FaSearch className='w-5 h-5 outline-none' />
+    <form onSubmit={handleSubmit} className='flex  items-center gap-2'>
+        <input value={search} onChange={(e)=>setSearch(e.target.value)} type='text' placeholder='Search...' className='input w-[60px] md:w-fit input-bordered rounded-full'></input>
+        <button type='submit' className='btn w-[30px] md:w-[45px] md:h-fit h-[30px] mt-auto btn-circle bg-sky-500 text-white'>
+        <FaSearch className='w-3 md:w-5 h-3 md:h-5 outline-none' />
         </button>
     </form>
   )

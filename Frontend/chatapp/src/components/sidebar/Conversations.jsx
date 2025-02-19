@@ -9,7 +9,7 @@ const Conversations = () => {
   // console.log("this is conversation ",conversations);
   // console.log(loading)
   return (
-    <div className='py-2 flex flex-col gap-2 overflow-auto'>
+    <div className='py-2 flex h-full  flex-col  gap-2 overflow-auto'>
         
         {
           conversations.map((item,idx)=>{
