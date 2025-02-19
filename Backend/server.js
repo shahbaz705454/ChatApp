@@ -1,9 +1,13 @@
 const { json } = require("body-parser");
 const express = require("express");
-const app  = express();
+
 const {dbConnect} =require("./config/database");
+const cors = require("cors");
 require("dotenv").config();
 const cookieParser = require("cookie-parser");
+const { server, app } = require("./socket/socket");
+
+app.use(cors());
 
 
 
@@ -22,7 +26,7 @@ app.use("/api/auth/",authRoutes);
 app.use("/api/message/",messageRoute);
 app.use("/api/user/",userRoutes);
 
-app.listen(PORT,()=>{console.log("Server is started at port : ", PORT)})
+server.listen(PORT,()=>{console.log("Server is started at port : ", PORT)})
 dbConnect();
 
 

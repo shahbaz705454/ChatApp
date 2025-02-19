@@ -1,23 +1,54 @@
-import React from 'react'
+import React from "react";
+import { useAuthContext } from "../../context/authContext";
+import useConversations from "../../store/useConversation";
 
-const Message = () => {
+const Message = ({ message }) => {
+  // console.log("inside message: ", message);
+
+  const { authUser } = useAuthContext();
+  const { selectedConversation } = useConversations();
+
+  // console.log("auth user",authUser);
+
+  // Determine if the message is from the logged-in user
+  const fromMe = message.senderId === authUser?._id;
+  const chatClassName = fromMe ? "chat-end" : "chat-start";
+
+  // Determine the profile picture
+  const profilePic = fromMe
+    ? authUser?.profilePic
+    : selectedConversation?.profilePic 
+
+  // Set bubble color based on sender
+  const bubbleColor = fromMe ? "bg-blue-500" : "bg-gray-500"; // Add gray color for received messages
+
+  // Convert timestamp to readable format
+  const formattedTime = new Date(message.timestamp || Date.now()).toLocaleTimeString([], {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+
+
+  const shakeClass = message.shouldShake ? "shake" : "";
+
   return (
-    <div className='chat chat-end '>
-      <div className='chat-image avatar'>
-        <div className='w-9 rounded-full' >
-          <img src='https://cdn2.iconfinder.com/data/icons/avatars-60/5985/28-School_Girl-512.png' alt='user Image'></img>
+    <div className={`chat ${chatClassName}`}>
+      {/* Profile Image */}
+      <div className="chat-image avatar">
+        <div className="w-10 rounded-full">
+          <img src={profilePic} alt="User Avatar" />
         </div>
-
       </div>
 
+      {/* Message Bubble */}
+      <div className={`chat-bubble text-white ${bubbleColor} ${shakeClass} text-sm`}>{message.message}</div>
 
-      <div className={`chat-bubble text-white bg-blue-500 text-sm`}> Hi! What is upp?</div>
-      <div className={`chat-footer opacity-50 text-xs flex gap-1 items-center`}>12:47</div>
-
-
-
+      {/* Timestamp */}
+      <div className="chat-footer opacity-50 text-xs flex gap-1 items-center">
+        {formattedTime}
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Message
+export default Message;

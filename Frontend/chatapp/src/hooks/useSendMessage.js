@@ -13,11 +13,11 @@ const useSendMessage = () => {
         console.log(selectedConversation._id)
         
         try{
-            const resp = await axios.post(`/api/messages/send/${selectedConversation._id}`,{
+            const resp = await axios.post(`/api/message/send/${selectedConversation._id}`,{
                 message
             })
-            console.log("Messages that get ",resp);
-            setMessages([...messages,resp]);
+            // console.log("Messages that get ",resp);
+            setMessages([...messages,resp.data.newMessage]);
         }catch(err){
             toast.error(err.message);
         }finally{

@@ -31,7 +31,8 @@ exports.login = async (req, resp) => {
             success:true,
             _id:user._id,
             fullName: user.fullName,
-            userName:user.userName
+            userName:user.userName,
+            profilePic:user.profilePic
         })
 
 
